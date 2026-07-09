@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CONG RIVER CAPITAL LIMITED | Scientific & Technical Consulting</title>
+<style>
+:root {
+    --primary-dark: #0a1118;
+    --primary-blue: #111d2b;
+    --accent-gold: #c5a059;
+    --accent-gold-hover: #dfb768;
+    --text-light: #f8fafc;
+    --text-dark: #1e293b;
+    --bg-light: #f1f5f9;
+    --font-heading: 'Georgia', serif;
+    --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    background-color: var(--primary-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: normal;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 17, 24, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--text-light);
+    font-size: 24px;
+    font-family: var(--font-heading);
+}
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    fill: var(--accent-gold);
+}
+.nav-menu {
+    display: flex;
+    gap: 40px;
+}
+.nav-link {
+    color: var(--text-light);
+    font-size: 15px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+.nav-link:hover {
+    color: var(--accent-gold);
+}
+.btn-outline {
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background: transparent;
+    cursor: pointer;
+}
+.btn-outline:hover {
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+}
+.btn-solid {
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    padding: 15px 32px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+}
+.btn-solid:hover {
+    background: var(--accent-gold-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+}
+.hero {
+    position: relative;
+    padding: 200px 50px 150px;
+    background: linear-gradient(rgba(10, 17, 24, 0.7), rgba(17, 29, 43, 0.9)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+    color: var(--text-light);
+    text-align: left;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+.hero-content {
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+}
+.hero-title {
+    font-size: 64px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    color: var(--text-light);
+}
+.hero-subtitle {
+    font-size: 22px;
+    color: #cbd5e1;
+    margin-bottom: 40px;
+    max-width: 650px;
+}
+.wave-bottom {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+.wave-bottom svg {
+    position: relative;
+    display: block;
+    width: calc(130% + 1.3px);
+    height: 150px;
+}
+.wave-bottom .shape-fill {
+    fill: var(--bg-light);
+}
+.section-light {
+    background-color: var(--bg-light);
+    padding: 100px 50px;
+    position: relative;
+}
+.section-dark {
+    background-color: var(--primary-blue);
+    padding: 100px 50px;
+    color: var(--text-light);
+    position: relative;
+}
+.section-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+.section-title {
+    font-size: 42px;
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+}
+.section-dark .section-title {
+    color: var(--text-light);
+}
+.section-subtitle {
+    font-size: 18px;
+    color: #64748b;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.section-dark .section-subtitle {
+    color: #94a3b8;
+}
+.about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #334155;
+}
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 50px 35px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.1);
+}
+.card-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 25px;
+    fill: var(--accent-gold);
+}
+.card-title {
+    font-size: 24px;
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+}
+.card-text {
+    font-size: 16px;
+    color: #64748b;
+    margin-bottom: 30px;
+}
+.card-link {
+    display: inline-block;
+    padding: 10px 25px;
+    background: var(--primary-dark);
+    color: var(--text-light);
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+.card-link:hover {
+    background: var(--accent-gold);
+}
+.process-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.process-step {
+    flex: 1;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+.process-number {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-dark);
+    color: var(--accent-gold);
+    font-size: 32px;
+    font-family: var(--font-heading);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    border: 2px solid var(--accent-gold);
+}
+.process-line {
+    position: absolute;
+    top: 40px;
+    left: 16%;
+    width: 68%;
+    height: 2px;
+    background: var(--accent-gold);
+    z-index: 1;
+    opacity: 0.5;
+}
+.process-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: var(--primary-dark);
+}
+.process-text {
+    font-size: 15px;
+    color: #475569;
+}
+.wave-top-dark {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+.wave-top-dark svg {
+    position: relative;
+    display: block;
+    width: calc(130% + 1.3px);
+    height: 100px;
+}
+.wave-top-dark .shape-fill {
+    fill: var(--bg-light);
+}
+.cta-section {
+    text-align: center;
+    padding: 120px 50px;
+    background: var(--primary-dark);
+    color: var(--text-light);
+}
+.cta-title {
+    font-size: 48px;
+    margin-bottom: 25px;
+}
+.cta-subtitle {
+    font-size: 20px;
+    color: #cbd5e1;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer {
+    background: #05080c;
+    padding: 60px 50px;
+    text-align: center;
+    color: #94a3b8;
+    border-top: 1px solid #1e293b;
+}
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 24px;
+    color: var(--text-light);
+    font-family: var(--font-heading);
+    margin-bottom: 30px;
+}
+.footer-info {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.modal-content {
+    background: var(--bg-light);
+    width: 100%;
+    max-width: 600px;
+    border-radius: 12px;
+    padding: 50px;
+    position: relative;
+    transform: translateY(50px);
+    transition: transform 0.4s ease;
+}
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 30px;
+    color: var(--primary-dark);
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+.form-group {
+    margin-bottom: 25px;
+}
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--primary-dark);
+    font-size: 14px;
+}
+.form-input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: var(--font-body);
+    background: #ffffff;
+    transition: border-color 0.3s ease;
+}
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+}
+textarea.form-input {
+    resize: vertical;
+    min-height: 120px;
+}
+.success-modal {
+    text-align: center;
+}
+.success-icon {
+    width: 80px;
+    height: 80px;
+    fill: var(--accent-gold);
+    margin: 0 auto 20px;
+}
+@media (max-width: 992px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+    .process-container {
+        flex-direction: column;
+        gap: 50px;
+    }
+    .process-line {
+        display: none;
+    }
+    .hero-title {
+        font-size: 48px;
+    }
+}
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    .header {
+        padding: 20px;
+    }
+    .hero {
+        padding-top: 150px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .section-light, .section-dark, .cta-section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24">
+            <path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13.5h-13L12 6.5z"/>
+            <path d="M12 10l-3 6h6l-3-6z"/>
+        </svg>
+        CONG RIVER CAPITAL
+    </div>
+    <nav class="nav-menu">
+        <a class="nav-link" data-target="home">Home</a>
+        <a class="nav-link" data-target="about">About Us</a>
+        <a class="nav-link" data-target="services">Services</a>
+        <a class="nav-link" data-target="advantages">Advantages</a>
+        <a class="nav-link" data-target="process">Process</a>
+    </nav>
+    <button class="btn-outline" onclick="openModal('contactModal')">Get in Touch</button>
+</header>
+
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">Advancing Enterprise Excellence and Innovation</h1>
+        <p class="hero-subtitle">Comprehensive management, scientific, and technical consulting services tailored to elevate your organizational performance and drive sustainable growth.</p>
+        <button class="btn-solid" onclick="openModal('contactModal')">Schedule a Consultation</button>
+    </div>
+    <div class="wave-bottom">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.83,121.75,199.19,106.63,243.68,96.81,283.47,70.76,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+</section>
+
+<section id="about" class="section-light">
+    <div class="section-header">
+        <h2 class="section-title">Discover Our Vision</h2>
+        <p class="section-subtitle">Dedicated to transforming complex challenges into strategic opportunities.</p>
+    </div>
+    <div class="about-container">
+        <p>Cong River Capital Limited is a premier consulting entity dedicated to transforming businesses through profound strategic insights and uncompromising scientific rigor. We specialize in providing advanced management, scientific, and technical consulting services to dynamic organizations worldwide. Our multidisciplinary team of seasoned experts brings decades of consolidated experience in navigating complex market variables and operational landscapes. We deliberately leverage data-driven methodologies to accurately identify operational bottlenecks and implement highly effective, scalable solutions. By partnering with us, forward-thinking clients gain exclusive access to innovative frameworks that foster sustainable growth and immediate competitive advantage. We remain steadfastly committed to absolute excellence, professional integrity, and delivering measurable results that consistently exceed expectations.</p>
+    </div>
+</section>
+
+<section id="services" class="section-dark">
+    <div class="wave-top-dark">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118,130.83,121.75,199.19,106.63,243.68,96.81,283.47,70.76,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+    <div class="section-header">
+        <h2 class="section-title">Results-Driven Business Solutions</h2>
+        <p class="section-subtitle">Achieve exceptional growth with our tailored consulting frameworks and proven operational methodologies.</p>
+    </div>
+    <div class="cards-grid">
+        <div class="card">
+            <svg class="card-icon" viewBox="0 0 24 24">
+                <path d="M3 3v18h18v-2H5V3H3zm16 6l-5 5-4-4-6 6v-3l6-6 4 4 5-5v3z"/>
+            </svg>
+            <h3 class="card-title">Management Consulting</h3>
+            <p class="card-text">We systematically optimize your organizational structure and internal processes to maximize overarching efficiency. Our strategic guidance empowers leadership teams to smoothly navigate transitions and scale operations effectively. We directly align your business objectives with actionable, clear roadmaps for long-term operational success.</p>
+            <a class="card-link" onclick="openModal('contactModal')">Learn More</a>
+        </div>
+        <div class="card">
+            <svg class="card-icon" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+            </svg>
+            <h3 class="card-title">Scientific Analysis</h3>
+            <p class="card-text">We provide rigorous scientific evaluation and deep data analysis to fundamentally support evidence-based decision-making. Our technical experts thoroughly assess complex statistical variables to deliver remarkably clear, actionable insights. We successfully bridge the critical gap between advanced scientific research and practical business applications.</p>
+            <a class="card-link" onclick="openModal('contactModal')">Learn More</a>
+        </div>
+        <div class="card">
+            <svg class="card-icon" viewBox="0 0 24 24">
+                <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.06-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.73,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.06,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.49-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+            </svg>
+            <h3 class="card-title">Technical Integration</h3>
+            <p class="card-text">Our dedicated team oversees the complete deployment of highly specialized technical solutions appropriately tailored to your existing infrastructure. We ensure the entirely seamless integration of new methodologies while strictly minimizing any potential operational disruption. We provide extensive ongoing support to continuously maintain optimal technical performance.</p>
+            <a class="card-link" onclick="openModal('contactModal')">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<section id="advantages" class="section-light">
+    <div class="section-header">
+        <h2 class="section-title">The Value We Bring</h2>
+        <p class="section-subtitle">Why industry leaders consistently choose our expertise for their most critical operations.</p>
+    </div>
+    <div class="cards-grid">
+        <div class="card">
+            <h3 class="card-title">Proven Expertise</h3>
+            <p class="card-text">Our multidisciplinary team essentially consists of recognized industry leaders with extensive, diverse backgrounds in management and applied sciences. We bring an immense wealth of practical, tested knowledge to absolutely every consulting project.</p>
+        </div>
+        <div class="card">
+            <h3 class="card-title">Tailored Strategies</h3>
+            <p class="card-text">We fundamentally understand that no two organizational structures are entirely identical. Consequently, we develop highly customized consulting frameworks specifically designed to systematically address your unique corporate challenges.</p>
+        </div>
+        <div class="card">
+            <h3 class="card-title">Measurable Outcomes</h3>
+            <p class="card-text">We maintain a relentless focus on delivering highly tangible, easily quantifiable performance results. Our operational methodologies are intrinsically built around defining key performance indicators to ensure maximum return on client investment.</p>
+        </div>
+    </div>
+</section>
+
+<section id="process" class="section-light" style="background-color: #ffffff;">
+    <div class="section-header">
+        <h2 class="section-title">Our Strategic Methodology</h2>
+        <p class="section-subtitle">A transparent, phased approach to achieving structural and functional excellence.</p>
+    </div>
+    <div class="process-container">
+        <div class="process-line"></div>
+        <div class="process-step">
+            <div class="process-number">01</div>
+            <h3 class="process-title">Comprehensive Assessment</h3>
+            <p class="process-text">We strategically begin with a profound deep dive into your current daily operations, heavily utilizing advanced analytical tools to completely map and identify all potential areas for systemic improvement.</p>
+        </div>
+        <div class="process-step">
+            <div class="process-number">02</div>
+            <h3 class="process-title">Strategy Formulation</h3>
+            <p class="process-text">Based exclusively on our intensive empirical findings, we meticulously formulate a highly customized strategic plan organically incorporating modern management best practices and technical insights.</p>
+        </div>
+        <div class="process-step">
+            <div class="process-number">03</div>
+            <h3 class="process-title">Execution & Optimization</h3>
+            <p class="process-text">We actively guide the physical implementation of the approved strategy, continuously and strictly monitoring performance metrics and making immediate data-driven adjustments for optimal results.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="cta-section">
+    <h2 class="cta-title">Ready to Transform Your Organization?</h2>
+    <p class="cta-subtitle">Initiate a dialogue with our senior consultants today to discover how our management, scientific, and technical expertise can propel your business forward.</p>
+    <button class="btn-solid" style="padding: 20px 40px; font-size: 18px;" onclick="openModal('contactModal')">Request a Professional Consultation</button>
+</section>
+
+<footer class="footer">
+    <div class="footer-logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" style="width: 30px; height: 30px;">
+            <path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13.5h-13L12 6.5z"/>
+        </svg>
+        CONG RIVER CAPITAL LIMITED
+    </div>
+    <p class="footer-info">Judeville Grove Avenue STILLORGAN, A94 RC82 Ireland</p>
+    <p class="footer-info">Email: netmail@congrivercapital.org</p>
+    <p style="margin-top: 30px; font-size: 14px; opacity: 0.5;">&copy; 2026 Cong River Capital Limited. All Rights Reserved. Providing Management, Scientific, and Technical Consulting Services.</p>
+</footer>
+
+<div class="modal-overlay" id="contactModal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('contactModal')">&times;</button>
+        <h2 class="section-title" style="font-size: 32px; margin-bottom: 30px; text-align: left;">Contact Our Team</h2>
+        <form id="contactForm" onsubmit="submitForm(event)">
+            <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Corporate Email</label>
+                <input type="email" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Company / Organization</label>
+                <input type="text" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Details of Inquiry</label>
+                <textarea class="form-input" required></textarea>
+            </div>
+            <button type="submit" class="btn-solid" style="width: 100%;">Submit Inquiry</button>
+        </form>
+    </div>
+</div>
+
+<div class="modal-overlay" id="successModal">
+    <div class="modal-content success-modal">
+        <button class="modal-close" onclick="closeModal('successModal')">&times;</button>
+        <svg class="success-icon" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        <h2 class="section-title" style="font-size: 32px; margin-bottom: 15px;">Message Transmitted</h2>
+        <p class="section-subtitle">Thank you for reaching out to Cong River Capital Limited. Our consulting team has received your inquiry and will respond to your corporate email address promptly.</p>
+        <button class="btn-solid" style="margin-top: 30px;" onclick="closeModal('successModal')">Close Window</button>
+    </div>
+</div>
+
+<script>
+document.querySelectorAll('.nav-link').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('data-target');
+        const targetElement = document.getElementById(targetId);
+        window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+        });
+    });
+});
+
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 50) {
+        header.style.padding = '15px 50px';
+        header.style.background = 'rgba(10, 17, 24, 0.95)';
+    } else {
+        header.style.padding = '20px 50px';
+        header.style.background = 'rgba(10, 17, 24, 0.9)';
+    }
+});
+
+function openModal(modalId) {
+    document.getElementById(modalId).classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal(modalId) {
+    document.getElementById(modalId).classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+function submitForm(event) {
+    event.preventDefault();
+    closeModal('contactModal');
+    setTimeout(() => {
+        openModal('successModal');
+        document.getElementById('contactForm').reset();
+    }, 400);
+}
+
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+</script>
+</body>
+</html>
